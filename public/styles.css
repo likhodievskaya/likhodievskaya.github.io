@@ -1,0 +1,125 @@
+/* Palette: Cloud Dancer #F0EEE9 (bg), ink #1B2036 (text), Blue Indigo #49516D, Dragon Fire #FD652D */
+body{margin:0;background:#F0EEE9}
+*{box-sizing:border-box}
+a{color:#1B2036}a:hover{color:#C2410C}
+.dot{transition:none}
+.dot.live{transition:transform 1.1s cubic-bezier(.22,.61,.36,1),background-color .8s ease,width .8s ease,height .8s ease,opacity 1.6s ease}
+.net circle{transition:stroke-opacity .5s ease}
+.net.live circle{transition:stroke-opacity .5s ease,transform 1.1s cubic-bezier(.22,.61,.36,1)}
+.cell{transition:background-color .25s ease}
+.cell:hover{background-color:#E6E3DC}
+.row{transition:padding-left .25s ease}
+.row:hover{padding-left:12px}
+.lay{position:relative;z-index:2}
+@media (prefers-reduced-motion: reduce){.dot{transition:none}.row{transition:none}}
+.dot-layer{position:fixed;left:0;top:0;width:100vw;height:100vh;pointer-events:none;z-index:1}
+.dot-layer .net{position:absolute;left:0;top:0;overflow:visible}
+.dot{position:absolute;left:0;top:0;border-radius:50%;opacity:0}
+
+/* Панель формата: справа на компьютере, на весь экран снизу на телефоне */
+html.fp-lock{overflow:hidden}
+.fp-scrim{position:fixed;inset:0;z-index:20;background:rgba(27,32,54,.45);opacity:0;transition:opacity .35s ease}
+.fp{position:fixed;top:0;right:0;bottom:0;z-index:21;width:min(860px,62vw);background:#F0EEE9;color:#1B2036;border-left:1px solid #1B2036;overflow-y:auto;overscroll-behavior:contain;font-family:Onest,system-ui,sans-serif;font-size:17px;line-height:1.55;transform:translateX(100%);transition:transform .45s cubic-bezier(.22,.61,.36,1)}
+.fp:focus{outline:none}
+.fp-open .fp-scrim{opacity:1}
+.fp-open .fp.is-open{transform:none}
+.fp-bar{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 40px;min-height:64px;background:#F0EEE9;border-bottom:1px solid #1B2036}
+.fp-mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#4A5170}
+.fp-close{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 4px;border:0;background:none;color:#1B2036;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.fp-close:hover{color:#C2410C}
+.fp-x{font-size:24px;line-height:1}
+.fp-back{display:none;font-size:18px}
+.fp-t-m{display:none}
+.fp-body{padding:40px 40px 56px}
+.fp-title{margin:0;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(32px,3.6vw,56px);line-height:1;letter-spacing:-.03em}
+.fp-lead{margin:20px 0 0;font-size:19px;max-width:620px}
+.fp-sec{margin-top:48px;padding-top:20px;border-top:1px solid #1B2036}
+.fp-h{margin:0 0 16px;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#4A5170}
+.fp-sec p{margin:0;color:#3A4060}
+.fp-fit,.fp-res{margin:20px 0 0;padding:0;list-style:none}
+.fp-fit li,.fp-res li{position:relative;padding:12px 0 12px 28px;border-bottom:1px solid #C9C6BE;font-size:16px}
+.fp-fit li::before,.fp-res li::before{content:'';position:absolute;left:4px;top:21px;width:8px;height:8px;border-radius:50%;background:#FD652D}
+.fp-res li::before{background:#49516D}
+.fp-list{margin:0;padding:0;list-style:none}
+.fp-list li{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid #C9C6BE}
+.fp-n{flex:0 0 28px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#C2410C;padding-top:4px}
+.fp-list b{display:block;font-family:Unbounded,sans-serif;font-weight:700;font-size:19px;line-height:1.25}
+.fp-list li>div>span{display:block;margin-top:6px;font-size:15px;color:#3A4060}
+.fp-tag{display:inline-block;vertical-align:middle;margin-left:6px;padding:3px 8px;border:1px solid #1B2036;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.04em;text-transform:uppercase;line-height:1.3;white-space:nowrap}
+.fp-sec p.fp-note{margin:0 0 8px;font-size:15px}
+.fp-sec p+p{margin-top:12px}
+.fp-case-row>div:only-child{flex-basis:100%}
+.fp-case-h{margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:26px;line-height:1.15;letter-spacing:-.02em}
+.fp-case-top+.fp-case-h{margin-top:20px}
+.fp-dl{margin:0;display:grid;grid-template-columns:minmax(0,160px) minmax(0,1fr)}
+.fp-dl dt{padding:14px 16px 14px 0;border-bottom:1px solid #C9C6BE;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#4A5170}
+.fp-dl dd{margin:0;padding:12px 0;border-bottom:1px solid #C9C6BE;font-size:16px}
+.fp-case{margin-top:48px;background:#49516D;color:#F0EEE9;padding:28px}
+.fp-case-top{display:flex;justify-content:space-between;gap:16px;color:#D6D9E6}
+.fp-case-row{margin-top:24px;display:flex;flex-wrap:wrap;gap:24px 40px}
+.fp-case-row>div{flex:1 1 220px;min-width:0}
+.fp-big{font-family:Unbounded,sans-serif;font-weight:800;font-size:64px;line-height:.95;letter-spacing:-.04em}
+.fp-big small{font-size:28px}
+.fp-case p{margin:10px 0 0;font-size:15px;color:#E4E6EF}
+.fp-cta{margin-top:48px}
+.fp-cta p{margin:0;font-size:17px;max-width:560px}
+.fp-btns{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+.fp-btn{display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 22px;background:#FD652D;color:#1B2036;text-decoration:none;font-weight:600}
+.fp-btn span{font-family:'IBM Plex Mono',monospace}
+.fp-btn-o{background:none;border:1px solid #1B2036}
+.fp-btn:hover{color:#1B2036;background:#FF7B4A}
+.fp-btn-o:hover{background:#E6E3DC}
+
+@media (max-width: 959px){
+  .fp{width:100%;border-left:0;transform:translateY(100%)}
+  .fp-bar{padding:0 16px;min-height:56px}
+  .fp-bar .fp-mono{order:2}
+  .fp-back{display:inline}
+  .fp-x{display:none}
+  .fp-t-d{display:none}
+  .fp-t-m{display:inline}
+  .fp-body{padding:28px 16px calc(40px + env(safe-area-inset-bottom))}
+  .fp-lead{font-size:17px}
+  .fp-sec,.fp-case,.fp-cta{margin-top:36px}
+  .fp-list b{font-size:17px}
+  .fp-dl{grid-template-columns:minmax(0,1fr)}
+  .fp-dl dt{padding:14px 0 0;border-bottom:0}
+  .fp-dl dd{padding:4px 0 14px}
+  .fp-case{padding:22px}
+  .fp-big{font-size:52px}
+  .fp-btns{flex-direction:column}
+  .fp-btn{justify-content:space-between}
+}
+@media (prefers-reduced-motion: reduce){.fp,.fp-scrim{transition:none}}
+.fp-badge{display:inline-block;margin-bottom:20px;padding:4px 10px;background:#FD652D;color:#1B2036;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.fp-case>.fp-badge+.fp-case-row{margin-top:0}
+.fp-mix{margin-top:24px;padding:20px 24px;border:1px solid #1B2036;border-left:6px solid #FD652D}
+.fp-mix p{margin:8px 0 0;font-size:16px;color:#1B2036}
+@media (max-width: 959px){.fp-title{font-size:clamp(24px,7.6vw,40px);hyphens:auto}}
+.fp-example{margin-top:56px;padding:24px 0 0;border-top:6px solid #1B2036}
+.fp-ex-title{margin:0;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(26px,2.6vw,36px);line-height:1.05;letter-spacing:-.02em}
+.fp-ex-sub{margin:10px 0 0;font-size:17px;color:#3A4060}
+.fp-example+.fp-sec{margin-top:32px}
+
+/* Кнопка «Наверх»: появляется после первого экрана */
+.to-top{position:fixed;right:24px;bottom:24px;z-index:3;width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:#FD652D;color:#1B2036;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease,background-color .2s ease}
+.to-top.show{opacity:1;pointer-events:auto;transform:none}
+.to-top:hover{background:#1B2036;color:#F0EEE9}
+@media (max-width: 959px){.to-top{right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:48px;height:48px}}
+@media (prefers-reduced-motion: reduce){.to-top{transition:none}}
+
+/* Отступы между блоками: на телефоне меньше, чтобы не скроллить лишнее */
+.sec{padding:128px 24px 0}
+.contact{margin-top:128px}
+.contact-in{padding:96px 24px;min-height:92vh}
+.symbol-slot{flex:1 1 340px;min-height:360px}
+@media (max-width: 959px){
+  .sec{padding-top:80px}
+  .contact{margin-top:80px}
+  .contact-in{padding:56px 24px 32px;min-height:0}
+  .symbol-slot{flex-basis:100%;min-height:clamp(240px,72vw,320px)}
+}
+
+/* Телефон, финал: точки и круги двигаются вместе со страницей без задержки (класс pin ставит script.js) */
+.dot-layer.pin .dot.live{transition:background-color .8s ease,opacity 1.6s ease}
+.dot-layer.pin .net.live circle{transition:stroke-opacity .5s ease}
