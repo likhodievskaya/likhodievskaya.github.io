@@ -21,6 +21,6 @@
 
 ## Публикация
 
-Сайт опубликован: https://liho100.github.io
+Сайт опубликован: https://likhodievskaya.github.io
 
-Он лежит на GitHub Pages в репозитории `Liho100/Liho100.github.io`. После любой правки в папке `public` достаточно сохранить изменения в git и отправить их на GitHub (`git push`): сайт обновится сам за 1-2 минуты.
+Он лежит на GitHub Pages в репозитории `likhodievskaya/likhodievskaya.github.io`. После любой правки в папке `public` достаточно сохранить изменения в git и отправить их на GitHub (`git push`): сайт обновится сам за 1-2 минуты.
