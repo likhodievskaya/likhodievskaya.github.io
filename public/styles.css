@@ -123,3 +123,6 @@ html.fp-lock{overflow:hidden}
 /* Телефон, финал: точки и круги двигаются вместе со страницей без задержки (класс pin ставит script.js) */
 .dot-layer.pin .dot.live{transition:background-color .8s ease,opacity 1.6s ease}
 .dot-layer.pin .net.live circle{transition:stroke-opacity .5s ease}
+
+/* «Обо мне»: таблица фактов под фото и цитатой, на компьютере начинается от линии цитаты, под фото пустое поле, как в газетной вёрстке */
+@media (min-width: 960px){.about-facts{margin-left:296px !important}}
