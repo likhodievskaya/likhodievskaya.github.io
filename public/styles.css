@@ -126,3 +126,21 @@ html.fp-lock{overflow:hidden}
 
 /* «Обо мне»: таблица фактов под фото и цитатой, на компьютере начинается от линии цитаты, под фото пустое поле, как в газетной вёрстке */
 @media (min-width: 960px){.about-facts{margin-left:296px !important}}
+
+/* Полосы с кнопкой диагностики после блоков и блок «Стоимость и оплата» (по отзыву: кнопка была только вверху и в самом конце) */
+.cta-strip{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding:24px 0;border-top:1px solid #1B2036;border-bottom:1px solid #1B2036}
+.cta-offset{margin-left:220px}
+.cta-text{margin:0;flex:1 1 360px;max-width:640px;font-size:17px;color:#1B2036}
+.cta-label{display:block;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#4A5170}
+.cta-btn{display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 22px;background:#FD652D;color:#1B2036;text-decoration:none;font-weight:600;white-space:nowrap}
+.cta-btn span{font-family:'IBM Plex Mono',monospace}
+.cta-btn:hover{background:#FF7B4A;color:#1B2036}
+.price{margin-top:40px;display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:8px 32px;padding-top:20px;border-top:1px solid #1B2036}
+.price p{margin:0;max-width:640px;font-size:16px;color:#3A4060}
+.price+.cta-strip{margin-top:24px}
+.pay-note{margin:20px 0 0;font-size:15px;color:#4A5170}
+@media (max-width: 959px){
+  .cta-offset{margin-left:0}
+  .cta-btn{width:100%;justify-content:space-between}
+  .price{grid-template-columns:minmax(0,1fr)}
+}
